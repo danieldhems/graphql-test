@@ -2,12 +2,14 @@ import React from "react";
 import ApolloClient from 'apollo-boost';
 import { editBook } from "./queries";
 
+// Apollo Client being initiated inside each relevant file because ApolloProvider doesn't seem to be working
+// Relevant discussion about broken tutorial(s) here: https://github.com/apollographql/apollo-client/issues/3639
 const client = new ApolloClient({
     uri: "http://localhost:4567/graphql",
     defaultOptions: {}
 });
 
-export class Edit extends React.Component {
+class Edit extends React.Component {
     editBook(e){
         e.preventDefault();
 

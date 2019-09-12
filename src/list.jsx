@@ -4,19 +4,20 @@ import ApolloClient from 'apollo-boost';
 import { getBooks } from "./queries";
 import "./list.css";
 
+// Apollo Client being initiated inside each relevant file because ApolloProvider doesn't seem to be working
+// Relevant discussion about broken tutorial(s) here: https://github.com/apollographql/apollo-client/issues/3639
 const client = new ApolloClient({
     uri: "http://localhost:4567/graphql",
     defaultOptions: {}
 });
 
-export class List extends React.Component {
+class List extends React.Component {
     state = {
         books: [],
         selected: [],
         itemsToShowBasketReadout: [],
     }
     fetchBooks(){
-        console.log(this.props)
         client.query({query: getBooks})
         .then( response => {
             this.setState({books: response.data.books})
@@ -49,6 +50,7 @@ export class List extends React.Component {
     getBasketTotat(){
         let price = 0;
         if(this.state.selected.length > 0){
+            // eslint-disable-next-line
             this.state.selected.map( b => { price += b.price})
         }
         return price.toFixed(2);
@@ -76,7 +78,7 @@ export class List extends React.Component {
     renderBookItem(book){
         const { bookId, title, author, price } = book;
         return (
-            <li className={this.isSelected(bookId) ? "is-selected" : ""}>
+            <li className={this.isSelected(bookId) ? "is-selected" : ""} key={bookId}>
                 <p>
                     <strong>{title}</strong> ({bookId})
                     <br/>

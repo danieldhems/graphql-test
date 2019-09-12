@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -24,17 +24,6 @@ function App() {
         <ApolloProvider client={client}>
           <Router>
             <div>
-              <nav>
-                <ul>
-                  <li>
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li>
-                    <Link to="/create/">Create</Link>
-                  </li>
-                </ul>
-              </nav>
-
               <Route path="/" exact component={ListView} />
               <Route path="/create/" component={CreateView} />
               <Route path="/edit/:bookId" component={EditView} />
