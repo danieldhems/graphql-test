@@ -80,7 +80,7 @@ class List extends React.Component {
         return (
             <li className={this.isSelected(bookId) ? "is-selected" : ""} key={bookId}>
                 <p>
-                    <strong>{title}</strong> ({bookId})
+                    <strong>{title}</strong> (ID: {bookId})
                     <br/>
                     by {author}
                     <br />
