@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### NOTE: This app requires a GraphQL instance to be running which is not provided as part of this repository
+
 ## Available Scripts
 
 In the project directory, you can run:
